@@ -183,7 +183,7 @@ class Model_konsultasi extends CI_Model
 
 	function get_by_gejala($gejala)
 	{
-		$sql = "select * from basis_pengetahuan gp inner join hama_penyakit p on gp.penyakit_id=p.id where gejala_id in (" . $gejala . ") order by penyakit_id,gejala_id";
+		$sql = "select distinct penyakit_id,p.kd_hmp,p.nama_hmp,p.deskripsi from basis_pengetahuan gp inner join hama_penyakit p on gp.penyakit_id=p.id where gejala_id in (" . $gejala . ") order by penyakit_id,gejala_id";
 		return $this->db->query($sql);
 	}
 

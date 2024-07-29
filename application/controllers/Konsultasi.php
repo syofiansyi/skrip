@@ -115,7 +115,7 @@ class Konsultasi extends CI_Controller
 			$this->db->insert('hasil_diagnosa', $data_hasil);
 
 
-	$data['tes'] =  $sql = $this->db->query( "select * from hasil_diagnosa gp inner join basis_pengetahuan p  where gejala_input in (".$gejala.") order by penyakit_id,gejala_id")->result_array();
+	$data['tes'] =  $sql = $this->db->query( "select distinct gejala_input, p.gejala_id from hasil_diagnosa gp inner join basis_pengetahuan p  where gejala_input in (".$gejala.") order by penyakit_id,gejala_id")->result_array();
 			$data['pageTitle'] = 'Dashboard';
 			$data['opr'] = $this->Model_konsultasi->get_gejala()->result();
 		 $data['edit'] = $this->Model_konsultasi->get_solusi();
